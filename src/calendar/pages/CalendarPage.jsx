@@ -9,7 +9,7 @@ import { useUIStore, useCalendarStore } from '../../hooks';
 export const CalendarPage = () => {
     const [ lastView, setLastView ] = useState(localStorage.getItem('lastView') || 'week');
     const { openDateModal } = useUIStore();
-    const { events } = useCalendarStore();
+    const { events, setActiveEvent } = useCalendarStore();
 
     const eventStyleGetter = ( event, start, end, isSelected ) => {
         const style = {
@@ -29,7 +29,7 @@ export const CalendarPage = () => {
     }
 
     const onSelect = ( event ) => {
-        console.log({ click: event })
+        setActiveEvent( event );
     }
 
     const onViewChanged = ( event ) => {
