@@ -27,10 +27,19 @@ export const caldendarSlice = createSlice({
         onAddNewEvent: ( state, { payload } ) => {
             state.events.push( payload );
             state.activeEvent = null;
+        },
+        onUpdateEvent: ( state, { payload } ) => {
+            state.events = state.events.map( event => {
+                if( event._id === payload._id ) {
+                    return payload;
+                }
+
+                return event;
+            } );
         }
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { onSetActiveEvent, onAddNewEvent } = caldendarSlice.actions;
+export const { onSetActiveEvent, onAddNewEvent, onUpdateEvent } = caldendarSlice.actions;
