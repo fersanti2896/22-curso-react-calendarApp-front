@@ -4,6 +4,7 @@ import { onAddNewEvent, onDeleteEvent, onSetActiveEvent, onUpdateEvent } from '.
 export const useCalendarStore = () => {
     const dispatch = useDispatch();
     const { activeEvent, events } = useSelector( state => state.calendar );
+    const { isDateModalOpen } = useSelector( state => state.ui );
 
     const setActiveEvent = ( calendarEvent ) => {
         dispatch( onSetActiveEvent(calendarEvent) )
@@ -29,6 +30,7 @@ export const useCalendarStore = () => {
         activeEvent,
         events,
         hasEventSelected: !!activeEvent,
+        isModalClose: isDateModalOpen,
 
         //* Métodos
         setActiveEvent,
